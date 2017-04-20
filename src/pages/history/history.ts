@@ -27,7 +27,8 @@ export class History {
   
   goToResult(test) {
     this.navCtrl.push(Results, {
-      test: test
+      test: test,
+      showHome: true
     });
   }
 

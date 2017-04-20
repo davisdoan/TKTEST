@@ -1,6 +1,7 @@
 import { Component,ViewChild } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
 import { Chart } from 'chart.js';
+import { Lobby} from '../lobby/lobby';
 
 /**
  * Generated class for the Results page.
@@ -17,15 +18,20 @@ export class Results {
   @ViewChild('barCanvas') barCanvas;
   barChart: any;
   test: any = {};
+  showHome: boolean = false;
 
   constructor(public navCtrl: NavController, public navParams: NavParams) {
   }
+  
+  toLobby() {
+    this.navCtrl.push(Lobby);
+  }
 
   ionViewDidLoad() {
-    
-    //console.log(this.navParams.get("test"));
     console.log('ionViewDidLoad Results');
+    
     this.test = this.navParams.get("test");
+    this.showHome = this.navParams.get("showHome");
     let testLabels = [
             'Avoiding',
             'Accommodating',
@@ -33,6 +39,12 @@ export class Results {
             'Competing',
             'Collaborating'
           ]
+          for(let i=0; i < testLabels.length; i++){
+          console.log("Result for" + i + " is " + this.test[testLabels[i]] * 12);
+          }
+      
+          
+          console.log("My result for "+ testLabels[0] + " is:" +   Math.round((this.test[testLabels[0]] * 12) / 100) )
     
         this.barChart = new Chart(this.barCanvas.nativeElement, {
       type: 'bar',
@@ -40,11 +52,11 @@ export class Results {
         labels: testLabels,
         datasets: [{
           data: [
-            this.test[testLabels[0]],
-            this.test[testLabels[1]],
-            this.test[testLabels[2]],
-            this.test[testLabels[3]],
-            this.test[testLabels[4]],
+            Math.round((this.test[testLabels[0]] * 12)),
+            Math.round((this.test[testLabels[1]] * 12)),
+            Math.round((this.test[testLabels[2]] * 12)),
+            Math.round((this.test[testLabels[3]] * 12)),
+            Math.round((this.test[testLabels[4]] * 12))
           ],
           backgroundColor: [
             'rgba(255, 99, 132, 0.2)',
