@@ -52,11 +52,11 @@ export class Results {
         labels: testLabels,
         datasets: [{
           data: [
-            Math.round((this.test[testLabels[0]] * 12)),
-            Math.round((this.test[testLabels[1]] * 12)),
-            Math.round((this.test[testLabels[2]] * 12)),
-            Math.round((this.test[testLabels[3]] * 12)),
-            Math.round((this.test[testLabels[4]] * 12))
+            Math.round((this.test[testLabels[0]] / 12) * 100),
+            Math.round((this.test[testLabels[1]] / 12) * 100),
+            Math.round((this.test[testLabels[2]] / 12) * 100),
+            Math.round((this.test[testLabels[3]] / 12) * 100),
+            Math.round((this.test[testLabels[4]] / 12) * 100)
           ],
           backgroundColor: [
             'rgba(255, 99, 132, 0.2)',

@@ -9,6 +9,9 @@ import { Lobby } from '../pages/lobby/lobby';
 import { Question } from '../pages/question/question';
 import { History} from '../pages/history/history';
 import { Results } from '../pages/results/results';
+import { Questions } from '../providers/questions';
+import { TestResults } from '../providers/test-results';
+import { AppUser } from '../providers/app-user';
 
 let injections: any[] = [
   MyApp,
@@ -29,7 +32,10 @@ let injections: any[] = [
   providers: [
     StatusBar,
     SplashScreen,
-    {provide: ErrorHandler, useClass: IonicErrorHandler}
+    {provide: ErrorHandler, useClass: IonicErrorHandler},
+    Questions,
+    AppUser,
+    TestResults
   ]
 })
 export class AppModule {}
