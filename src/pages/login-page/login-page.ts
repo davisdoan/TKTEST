@@ -33,7 +33,7 @@ export class LoginPage {
       return alert("Please fill in all of the required fields.");
   }
   
-  this.appUser.login(this.user.token)
+  this.appUser.login(this.user)
     .map(res => res.json())
     .subscribe(res => {
       if(res.data == null) {
