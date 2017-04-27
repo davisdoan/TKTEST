@@ -46,12 +46,30 @@ export class Question {
   questions: any = [];
   testAnswers: any = {};
   
-  constructor(public navCtrl: NavController, public navParams: NavParams) {
-    for(let singleQuestion of apiQuestions){ // loop through the questions list
-      if(!this.questions[singleQuestion.Question_Number -1]) // 1st would be:     if not this.questions[0]
-        this.questions[singleQuestion.Question_Number -1 ] = {} // set it to ... empty?
-      this.questions[singleQuestion.Question_Number - 1][singleQuestion.Answer_ID] = singleQuestion; // 
+  constructor(
+    public navCtrl: NavController, 
+    public navParams: NavParams,
+    public questionsProv: Questions
+    ) 
+    {
+    questionsProv.getQuestions(window.localStorage.getItem("token"))
+    .map(res => res.json())
+    .subscribe(res => {
+      apiQuestions = res;
+      for(let singleQuestion of apiQuestions) {
+        if(!this.questions[singleQuestion.Question_Number -1]) // 1st would be:     if not this.questions[0]
+         this.questions[singleQuestion.Question_Number -1 ] = {} // set it to ... empty?
+       this.questions[singleQuestion.Question_Number - 1][singleQuestion.Answer_ID] = singleQuestion; // 
+      }
+    }, error => {
+      alert("warning");
     }
+    });
+    // for(let singleQuestion of apiQuestions){ // loop through the questions list
+    //   if(!this.questions[singleQuestion.Question_Number -1]) // 1st would be:     if not this.questions[0]
+    //     this.questions[singleQuestion.Question_Number -1 ] = {} // set it to ... empty?
+    //   this.questions[singleQuestion.Question_Number - 1][singleQuestion.Answer_ID] = singleQuestion; // 
+    // }
   }
 
   ionViewDidLoad() {

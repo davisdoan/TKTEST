@@ -17,7 +17,6 @@ export class AppUser {
   baseUrl: string = "https://sp-17-davis-jbrownssf.c9users.io:8080/api";
   path: string ="/AppUsers";
   
-  
   login(oldUserData){
     return this.http.post(
       this.baseUrl + this.path + "/login", oldUserData  
