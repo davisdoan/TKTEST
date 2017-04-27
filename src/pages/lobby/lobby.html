@@ -7,6 +7,11 @@
 <ion-header>
   <ion-navbar color="primary" text-center>
     <ion-title>Lobby</ion-title>
+    <ion-buttons end side="primary">
+      <button ion-button icon-only (click)="toLogOut()" *ngIf="showLog">
+        <ion-icon name="log-out"></ion-icon>
+      </button>
+    </ion-buttons>
   </ion-navbar>
 </ion-header>
 

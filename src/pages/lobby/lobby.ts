@@ -2,6 +2,8 @@ import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
 import { Question } from '../question/question';
 import { History } from '../history/history';
+import { LandingPage } from '../landing-page/landing-page';
+import { AppUser } from '../../providers/app-user'; 
 
 /**
  * Generated class for the Lobby page.
@@ -15,12 +17,21 @@ import { History } from '../history/history';
   templateUrl: 'lobby.html',
 })
 export class Lobby {
-
-  constructor(public navCtrl: NavController, public navParams: NavParams) {
+  //showLog: boolean = false;
+  constructor(
+    public navCtrl: NavController, 
+    public navParams: NavParams,
+    public appUser: AppUser
+    ) {
   }
 
   ionViewDidLoad() {
     console.log('ionViewDidLoad Lobby');
+  }
+
+  
+  toLogOut() {
+    this.navCtrl.push(LandingPage);
   }
   
   takeTest() {

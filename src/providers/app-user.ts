@@ -24,6 +24,14 @@ export class AppUser {
     );
   }
   
+  logout(token){
+    return this.http.post(
+      this.baseUrl + this.path + '/logout' + 
+      '?access_token=' + token,
+      {}
+    );
+  }
+  
   register(newUserData){
     return this.http.post(
       this.baseUrl + this.path,

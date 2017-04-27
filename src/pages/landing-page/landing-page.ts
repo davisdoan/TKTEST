@@ -2,6 +2,8 @@ import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
 import { LoginPage } from '../login-page/login-page';
 import { RegisterPage } from '../register-page/register-page'; 
+import { AppUser } from '../../providers/app-user'; 
+
 /**
  * Generated class for the LandingPage page.
  *
@@ -15,7 +17,11 @@ import { RegisterPage } from '../register-page/register-page';
 })
 export class LandingPage {
 
-  constructor(public navCtrl: NavController, public navParams: NavParams) {
+  constructor(
+    public navCtrl: NavController, 
+    public navParams: NavParams,
+    public appUser: AppUser,
+    ) {
   }
 
   ionViewDidLoad() {
